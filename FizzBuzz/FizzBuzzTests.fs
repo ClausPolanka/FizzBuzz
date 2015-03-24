@@ -15,38 +15,38 @@ module FizzBuzz =
 module Tests =
 
     [<Theory>]
-    [<InlineData(4)>]
     [<InlineData(1)>]
-    [<InlineData(1000003)>]
+    [<InlineData(2)>]
+    [<InlineData(3)>]
     let ``FizzBuzz.transform returns the number`` (number : int) = 
-        let actual = FizzBuzz.transform number
-        let expected = string number
+        let actual = FizzBuzz.transform (number * 3 * 5 + 1)
+        let expected = string (number * 3 * 5 + 1)
         test <@ expected = actual @>
     
     [<Theory>]
+    [<InlineData(1)>]
+    [<InlineData(2)>]
     [<InlineData(3)>]
-    [<InlineData(9)>]
-    [<InlineData(12)>]
     let ``FizzBuzz.transform returns Fizz`` (number : int) = 
-        let actual = FizzBuzz.transform number
+        let actual = FizzBuzz.transform (number * 3 * 5 + 3)
         let expected = "Fizz"
         test <@ expected = actual @>
     
     [<Theory>]
-    [<InlineData(5)>]
-    [<InlineData(10)>]
-    [<InlineData(20)>]
+    [<InlineData(1)>]
+    [<InlineData(2)>]
+    [<InlineData(3)>]
     let ``FizzBuzz.transform returns Buzz`` (number : int) = 
-        let actual = FizzBuzz.transform number
+        let actual = FizzBuzz.transform (number * 3 * 5 + 5)
         let expected = "Buzz"
         test <@ expected = actual @>
     
     [<Theory>]
-    [<InlineData(15)>]
-    [<InlineData(30)>]
-    [<InlineData(1000000005)>]
+    [<InlineData(1)>]
+    [<InlineData(2)>]
+    [<InlineData(3)>]
     let ``FizzBuzz.transform returns FizzBuzz`` (number : int) = 
-        let actual = FizzBuzz.transform number
+        let actual = FizzBuzz.transform (number * 3 * 5)
         let expected = "FizzBuzz"
         test <@ expected = actual @>
 
