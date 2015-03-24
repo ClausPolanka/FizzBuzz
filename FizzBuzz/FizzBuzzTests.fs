@@ -14,10 +14,10 @@ module FizzBuzz =
 
 module Tests =
 
-    [<Theory>]
-    [<InlineData(1)>]
-    [<InlineData(2)>]
-    [<InlineData(3)>]
+    open Xunit
+    open FsCheck.Xunit
+
+    [<Property>]
     let ``FizzBuzz.transform returns the number`` (number : int) = 
         let actual = FizzBuzz.transform (number * 3 * 5 + 1)
         let expected = string (number * 3 * 5 + 1)
