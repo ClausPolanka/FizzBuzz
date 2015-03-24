@@ -7,7 +7,7 @@ open Swensen.Unquote
 module FizzBuzz =
     let transform number = 
         match number with 
-        | 3 | 9 -> "Fizz"
+        | 3 | 9 | 12 -> "Fizz"
         | _ -> string number
 
 module Tests =
