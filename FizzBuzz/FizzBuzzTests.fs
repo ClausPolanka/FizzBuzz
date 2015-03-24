@@ -29,4 +29,11 @@ module Tests =
         let actual = FizzBuzz.transform number
         let expected = "Fizz"
         test <@ expected = actual @>
+    
+    [<Theory>]
+    [<InlineData(5)>]
+    let ``FizzBuzz.transform returns Buzz`` (number : int) = 
+        let actual = FizzBuzz.transform number
+        let expected = "Buzz"
+        test <@ expected = actual @>
 
