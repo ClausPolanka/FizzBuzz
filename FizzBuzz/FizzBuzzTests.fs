@@ -6,11 +6,10 @@ open Swensen.Unquote
 
 module FizzBuzz =
     let transform number = 
-        match number with
-        | 4 -> "4"
-        | _ -> "1"
+        string number
 
 module Tests =
+
     [<Theory>]
     [<InlineData(4)>]
     [<InlineData(1)>]
