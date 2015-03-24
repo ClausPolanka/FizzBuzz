@@ -14,30 +14,34 @@ module FizzBuzz =
 
 module Tests =
 
-    open Xunit
+    open FsCheck
     open FsCheck.Xunit
 
     [<Property>]
     let ``FizzBuzz.transform returns the number`` (number : int) = 
-        let actual = FizzBuzz.transform (number * 3 * 5 + 1)
-        let expected = string (number * 3 * 5 + 1)
-        test <@ expected = actual @>
+        (number % 3 <> 0 && number % 5 <> 0) ==> lazy
+        let actual = FizzBuzz.transform number
+        let expected = string number
+        expected = actual
     
     [<Property>]
     let ``FizzBuzz.transform returns Fizz`` (number : int) = 
-        let actual = FizzBuzz.transform (number * 3 * 5 + 3)
+        (number % 3 = 0 && number % 5 <> 0) ==> lazy
+        let actual = FizzBuzz.transform number
         let expected = "Fizz"
-        test <@ expected = actual @>
+        expected = actual
     
     [<Property>]
     let ``FizzBuzz.transform returns Buzz`` (number : int) = 
-        let actual = FizzBuzz.transform (number * 3 * 5 + 5)
+        (number % 3 <> 0 && number % 5  = 0) ==> lazy
+        let actual = FizzBuzz.transform number
         let expected = "Buzz"
-        test <@ expected = actual @>
+        expected = actual
     
-    [<Property>]
+    [<Property(MaxFail = 2000)>]
     let ``FizzBuzz.transform returns FizzBuzz`` (number : int) = 
-        let actual = FizzBuzz.transform (number * 3 * 5)
+        (number % 3 = 0 && number % 5 = 0) ==> lazy
+        let actual = FizzBuzz.transform number
         let expected = "FizzBuzz"
-        test <@ expected = actual @>
+        expected = actual
 
