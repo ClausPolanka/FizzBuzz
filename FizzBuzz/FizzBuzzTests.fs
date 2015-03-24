@@ -5,7 +5,7 @@ open Xunit.Extensions
 open Swensen.Unquote
 
 module FizzBuzz =
-    let transform number = ""
+    let transform number = "4"
 
 module Tests =
     [<Theory>]
