@@ -7,6 +7,7 @@ open Swensen.Unquote
 module FizzBuzz =
     let transform number = 
         match number % 3, number % 5 with 
+        | 0, 0 -> "FizzBuzz"
         | _, 0 -> "Buzz"
         | 0, _ -> "Fizz"
         | _ -> string number
@@ -34,9 +35,18 @@ module Tests =
     [<Theory>]
     [<InlineData(5)>]
     [<InlineData(10)>]
-    [<InlineData(15)>]
+    [<InlineData(20)>]
     let ``FizzBuzz.transform returns Buzz`` (number : int) = 
         let actual = FizzBuzz.transform number
         let expected = "Buzz"
+        test <@ expected = actual @>
+    
+    [<Theory>]
+    [<InlineData(15)>]
+    [<InlineData(30)>]
+    [<InlineData(1000000005)>]
+    let ``FizzBuzz.transform returns FizzBuzz`` (number : int) = 
+        let actual = FizzBuzz.transform number
+        let expected = "FizzBuzz"
         test <@ expected = actual @>
 
