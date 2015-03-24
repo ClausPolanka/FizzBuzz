@@ -10,6 +10,7 @@ module FizzBuzz =
 module Tests =
     [<Theory>]
     [<InlineData(4)>]
+    [<InlineData(1)>]
     let ``FizzBuzz.transform returns the number`` (number : int) = 
         let actual = FizzBuzz.transform number
         let expected = string number
